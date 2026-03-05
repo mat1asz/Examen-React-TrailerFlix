@@ -1,0 +1,17 @@
+{
+  "name": "trailerflix-api",
+  "version": "1.0.0",
+  "description": "API REST para el examen TrailerFlix - Backend ya implementado",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["trailerflix", "api", "examen"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

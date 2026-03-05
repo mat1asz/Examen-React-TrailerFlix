@@ -1,5 +1,9 @@
 const generos = ['Ciencia Ficción', 'Drama', 'Suceso Real', 'Suspenso', 'Fantasía', 'Familia', 'Acción', 'Terror', 'Aventura'].sort()
-const URL = '../data/trailerflix.json'
+
+// Base del API (vacío = mismo origen cuando se sirve desde el backend en http://localhost:3001)
+const API_BASE = ''
+const URL = `${API_BASE}/api/contenido`
+
 let contenido
 let armoHTML
 

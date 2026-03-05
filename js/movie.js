@@ -1,4 +1,5 @@
-const URL = '../data/trailerflix.json'
+// Base del API (mismo origen si la app se abre desde http://localhost:3001)
+const API_BASE = ''
 const movieDetailsContainer = document.querySelector('.movie-details')
 
 // Obtener el ID de la URL
@@ -7,12 +8,17 @@ const movieId = parseInt(params.get('id'))
 
 const getMovieDetails = async () => {
   try {
-    const response = await fetch(URL)
-    const data = await response.json()
-    const movie = data.find(item => item.id === movieId)
+    const response = await fetch(`${API_BASE}/api/contenido/${movieId}`)
+    if (!response.ok) {
+      if (response.status === 404) {
+        movieDetailsContainer.innerHTML = '<p class="error">Película no encontrada.</p>'
+        return
+      }
+      throw new Error('Error en la petición')
+    }
+    const movie = await response.json()
 
-    if (movie) {
-      movieDetailsContainer.innerHTML = `
+    movieDetailsContainer.innerHTML = `
         <div class="movie-poster">
           <img src="${movie.poster}" alt="${movie.titulo}" />
         </div>
@@ -23,9 +29,6 @@ const getMovieDetails = async () => {
           <p><strong>Reparto:</strong> ${movie.reparto}</p>
         </div>
       `
-    } else {
-      movieDetailsContainer.innerHTML = '<p class="error">Película no encontrada.</p>'
-    }
   } catch (error) {
     movieDetailsContainer.innerHTML = '<p class="error">Error al cargar los detalles de la película.</p>'
   }

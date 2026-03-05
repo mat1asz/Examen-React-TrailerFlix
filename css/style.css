@@ -306,6 +306,36 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* Estados de visibilidad del login (controlados por JS) */
+.login-form-visible {
+    display: flex !important;
+}
+.login-form-hidden {
+    display: none !important;
+}
+.login-user-info-visible {
+    display: flex !important;
+}
+.login-user-info-hidden {
+    display: none !important;
+}
+
+.login-error {
+    margin: 0;
+    padding: 4px 0;
+    font-size: 12px;
+    color: #ff6b6b;
+    min-height: 18px;
+}
+.login-error:empty {
+    display: none;
+}
+
+#loginForm button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 #userNameDisplay {
     color: white;
     font-size: 14px;

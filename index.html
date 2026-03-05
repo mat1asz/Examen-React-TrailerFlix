@@ -22,17 +22,19 @@
         <h1 class="red-text logo-title">TRAILERFLIX</h1>
       </div>
       <div class="login-container">
-        <form id="loginForm" style="display: none">
-          <input type="text" id="username" placeholder="Usuario" required />
+        <form id="loginForm" class="login-form-visible" action="javascript:void(0)" novalidate>
+          <input type="text" id="username" placeholder="Usuario" required autocomplete="username" />
           <input
             type="password"
             id="password"
             placeholder="Contraseña"
             required
+            autocomplete="current-password"
           />
-          <button type="submit">Ingresar</button>
+          <p id="loginError" class="login-error" aria-live="polite"></p>
+          <button type="submit" id="loginSubmitBtn">Ingresar</button>
         </form>
-        <div id="userInfo" style="display: none">
+        <div id="userInfo" class="login-user-info-hidden">
           <span id="userNameDisplay"></span>
           <button id="logoutBtn">Cerrar sesión</button>
         </div>
