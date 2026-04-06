@@ -1,8 +1,18 @@
+/**
+ * movie.js
+ * 
+ * Este archivo se encarga de mostrar el detalle buscando el `id` en la URL.
+ * En React:
+ * 1. Obtenemos el `id` mediante el hook `useParams()` de react-router-dom.
+ * 2. Usamos un `useEffect` con la dependencia `[id]` para buscar los datos.
+ * 3. `movie` y `error` serán variables de estado manejadas con `useState()`.
+ */
+
 // Base del API (mismo origen si la app se abre desde http://localhost:3001)
 const API_BASE = ''
 const movieDetailsContainer = document.querySelector('.movie-details')
 
-// Obtener el ID de la URL
+// Obtener el ID de la URL. En React se usa useParams()
 const params = new URLSearchParams(window.location.search)
 const movieId = parseInt(params.get('id'))
 

@@ -2,6 +2,9 @@
  * Login en el frontend - Consume POST /api/login
  * Funciona en index.html y movie.html (mismo header con formulario).
  * Envuelto en IIFE para no colisionar con API_BASE de app.js.
+ * 
+ * En React: toda esta lógica debería encapsularse dentro de un `AuthContext.jsx` 
+ * (y un hook `useAuth`) para que el `user` esté disponible como estado global en toda la SPA sin prop drilling.
  */
 (function () {
   const baseUrl = (typeof window !== 'undefined' && window.location.origin.includes('3001'))

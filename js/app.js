@@ -1,3 +1,13 @@
+/**
+ * app.js
+ * 
+ * Controlador base que obtiene el catálogo y muestra tarjetas.
+ * En React:
+ * - Toda la lógica del fetch irá dentro de un `useEffect()`.
+ * - "contenido" y los estados de carga se guardarán mediante `useState()`.
+ * - Renderizar categorías o tarjetas se logrará con métodos `.map()` en JSX.
+ */
+
 const generos = ['Ciencia Ficción', 'Drama', 'Suceso Real', 'Suspenso', 'Fantasía', 'Familia', 'Acción', 'Terror', 'Aventura'].sort()
 
 // Base del API (vacío = mismo origen cuando se sirve desde el backend en http://localhost:3001)
