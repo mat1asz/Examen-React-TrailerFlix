@@ -1,14 +1,7 @@
+// PASO 1 · COPIAR TAL CUAL
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth.js";
-
-// Componente de formulario de login.
-//
-// MUY IMPORTANTE (EXAMEN):
-// - Este componente está pensado para usarse dentro del `Layout`
-//   (similar a cómo el login aparece en el header en la versión JS vanilla).
-// - Aquí solo se deja la estructura del formulario y los estados básicos.
-// - La llamada real a la API (usando **POST** a `/api/login`) y la integración
-//   con el contexto de autenticación deben ser IMPLEMENTADAS POR EL ALUMNO.
+import { apiFetch } from "../api/client.js";
 
 export function LoginForm() {
   const { login } = useAuth();
@@ -17,30 +10,33 @@ export function LoginForm() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError(null);
     setLoading(true);
-
-    // TODO:
-    // - Llamar a la API para validar credenciales usando:
-    //     POST /api/login
-    // - Si las credenciales son correctas, llamar a `login(...)` del contexto.
-    // - Si no, mostrar un mensaje de error adecuado en `setError(...)`.
-    // - Al finalizar, volver a poner `loading` en false.
-    console.warn(
-      "TODO: implementar lógica de login (llamadas a API y uso de AuthContext)",
-    );
-    setLoading(false);
+    try {
+      const datos = await apiFetch("/login", {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+      });
+      login({
+        fullName: datos.firstName
+          ? `${datos.firstName} ${datos.lastName}`
+          : datos.username,
+        rol: datos.rol || "",
+      });
+    } catch (e) {
+      setError(e);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
-    >
+    <form id="loginForm" onSubmit={handleSubmit}>
       <input
         type="text"
+        id="username"
         placeholder="Usuario"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
@@ -48,20 +44,20 @@ export function LoginForm() {
       />
       <input
         type="password"
+        id="password"
         placeholder="Contraseña"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      <button type="submit" className="btn-gaming" disabled={loading}>
+      <button type="submit" disabled={loading}>
         {loading ? "Ingresando..." : "Ingresar"}
       </button>
       {error && (
-        <p style={{ marginTop: "0.25rem", color: "#ffb3b3", fontSize: "0.8rem" }}>
+        <p id="loginError" className="login-error">
           {error.message}
         </p>
       )}
     </form>
   );
 }
-
