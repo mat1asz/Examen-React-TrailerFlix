@@ -53,11 +53,11 @@ export function VideoDetailPage() {
 
   return (
     <>
-    <main className="movie-page-container">
-      <a href="index.html" className="back-btn">← Volver al catálogo</a>
+    <div className="movie-page-container">
+      <Link to="/" className="back-btn">← Volver al catálogo</Link>
       <div className="movie-details">
         <div className="movie-poster">
-          <img src={`http://localhost:3001${movie.poster}`} alt={movie.titulo} />
+          <img src={`http://localhost:3001/${movie.poster}`} alt={movie.titulo} />
         </div>
         <div className="movie-info">
           <h2>{movie.titulo}</h2>
@@ -66,7 +66,7 @@ export function VideoDetailPage() {
           <p><strong>Reparto:</strong> {movie.reparto}</p>
         </div>
       </div>
-    </main>
+    </div>
     
     </>
   );

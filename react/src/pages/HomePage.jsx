@@ -13,7 +13,7 @@ function agrupar(lista, campo) {
 }
 
 export function HomePage() {
-  const { datos, loading, error } = use__LISTA_CAP__();
+  const { datos, loading, error } = useVideos();
 
   if (loading) {
     return (

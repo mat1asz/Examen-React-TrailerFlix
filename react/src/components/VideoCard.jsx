@@ -7,11 +7,11 @@ export function VideoCard({ movie, grupo }) {
 
   return (
     <>
-      <div class="card">
+      <div className="card">
         <Link to={`/peliculas/${id}`}>
-          <div class="card-picture">
+          <div className="card-picture">
             <img
-              src={`http://localhost:3001${poster}`}
+              src={`http://localhost:3001/${poster}`}
               alt={titulo}
               title={titulo}
             />

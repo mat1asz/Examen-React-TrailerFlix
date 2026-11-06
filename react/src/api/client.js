@@ -1,5 +1,5 @@
 // PASO 2 · REEMPLAZAR (Ctrl+H con la ficha)
-export const API_BASE_URL = "http://localhost:3000/api";
+export const API_BASE_URL = "http://localhost:3001/api";
 
 export async function apiFetch(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {

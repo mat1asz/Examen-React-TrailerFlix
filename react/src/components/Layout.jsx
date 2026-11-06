@@ -16,7 +16,7 @@ export function Layout({ children }) {
   const areaLogin = user ? (
     <>
         <div id="userInfo" className="login-user-info-visible">
-          <span id="userNameDisplay">{user.fullName}</span>
+          <span id="userNameDisplay">Bienvenido{user.fullName}</span>
           <button id="logoutBtn" onClick={handleLogout}>
             Cerrar sesión
           </button>
@@ -29,13 +29,13 @@ export function Layout({ children }) {
   return (
     <>
     <header>
-      <div class="title">
-        <h1 class="red-text logo-title">TRAILERFLIX</h1>
+      <div className="title">
+        <h1 className="red-text logo-title">TRAILERFLIX</h1>
       </div>
-      <div class="login-container">
+      <div className="login-container">
         {areaLogin}
       </div>
-    </header>
+    </header> {children}
     </>
   );
 }
